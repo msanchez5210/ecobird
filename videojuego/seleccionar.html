@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoBird</title>
+    <link rel="stylesheet" href="/assets/css/style2.css">
+</head>
+<body>
+    <div class="caja">
+        <div class="cubos">
+            <div class="caja_cubos">
+                <a href="juego1.html"><img src="/assets/sprites/cuboenvases.png" alt="Cubo de envases"></a>
+                <img src="/assets/sprites/textoenvases.png" alt="envases" class="nombres_cubos">
+            </div>
+            <div class="caja_cubos">   
+                <a href="juego2.html"><img src="/assets/sprites/cubovidrio.png" alt="Cubo de vidrio"></a>
+                <img src="/assets/sprites/textovidrio.png" alt="vidrio" class="nombres_cubos">
+            </div>
+            <div class="caja_cubos">
+                <a href="juego3.html"><img src="/assets/sprites/cubocarton.png" alt="Cubo de cartón"></a>
+                <img src="/assets/sprites/textocarton.png" alt="carton" class="nombres_cubos">
+            </div>
+        </div>
+    </div> 
+
+    <script>
+        document.querySelectorAll(".caja_cubos a").forEach(function(enlace) {
+            enlace.addEventListener("click", function(evento) {
+                evento.preventDefault();
+                window.location.href = "carga.html";
+                setTimeout(() => {
+                    window.location.href = evento.target.href;
+                }, 3000);
+            });
+        });
+    </script>
+</html>
