@@ -23,16 +23,4 @@
             </div>
         </div>
     </div> 
-
-    <script>
-        document.querySelectorAll(".caja_cubos a").forEach(function(enlace) {
-            enlace.addEventListener("click", function(evento) {
-                evento.preventDefault();
-                window.location.href = "/assets/carga.html";
-                setTimeout(() => {
-                    window.location.href = evento.target.href;
-                }, 3000);
-            });
-        });
-    </script>
 </html>

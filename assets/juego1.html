@@ -10,7 +10,8 @@
 
     <body>
         <script>
-            kaboom();
+                            
+            kaboom();            
 
             loadSprite("background", "/assets/fondo.jpg");
             loadSprite("background2", "/assets/fondo_gameover.jpg")
@@ -18,6 +19,33 @@
             loadSprite("reiniciar", "/assets/sprites/reiniciar.png")
             loadSprite("cambiar", "/assets/sprites/cambiarcubo.png")
             loadSprite("menu", "/assets/sprites/menu.png")
+            loadSprite("carga", "/assets/olas.jpg")
+
+            // Definición de la escena de carga
+            onLoading(() => {
+                // Mostrar pantalla de carga
+                add([
+                    sprite("carga"),
+                    pos(0, 0),
+                    scale(width() / 1600),
+                ]);
+
+                // Añadir texto de carga
+                add([
+                    text("Cargando...", {
+                        size: 24,
+                        font: "Arial",
+                        color: rgb(255, 255, 255),
+                    }),
+                    pos(width() / 2, height() / 2),
+                ]);
+            });
+
+            setTimeout(() => {
+                // Cambiar a la escena principal del juego
+                go("battle");
+            }, 4000); // 4000 milisegundos = 4 segundos
+
 
             const material = [
                 {
@@ -131,7 +159,6 @@
 
             let puntos = 0;
 
-
             scene("battle", () => {
 
                 const TRASH_SPEED = 120
@@ -151,6 +178,7 @@
                 add([
                     sprite("background"),
                     pos(0, 0),
+                    scale(width() / 1900),
                 ]);
 
                 mostrarVidas()
@@ -305,7 +333,7 @@ Tu puntuación es de ${puntos} puntos`, {
                 });
 
             });
-            
+
             go("battle")            
 
         </script>

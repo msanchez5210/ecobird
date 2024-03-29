@@ -227,19 +227,6 @@
                     wait(0.3, spawnTrash)
                 }
 
-                const timer = add([
-                    text(0),
-                    pos(12, 32),
-                    fixed(),
-                    { time: 0 },
-                ])
-
-                timer.onUpdate(() => {
-                    timer.time += dt()
-                    timer.text = timer.time.toFixed(2)
-                })
-
-
                 onUpdate("trash", (t) => {
                     t.move(0, t.speed * (1))
                     if (t.pos.y - t.height > height()) {
