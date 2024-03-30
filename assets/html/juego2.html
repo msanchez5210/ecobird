@@ -12,8 +12,13 @@
         <script>
             kaboom();
 
-            loadSprite("background", "/assets/fondo.jpg");
-            loadSprite("corazon", "/assets/sprites/corazon.png")
+            loadSprite("background", "/assets/fondos/fondo.jpg");
+            loadSprite("background2", "/assets/fondos/fondo_gameover.jpg")
+            loadSprite("corazon", "/assets/botones/corazon.png")
+            loadSprite("reiniciar", "/assets/botones/reiniciar.png")
+            loadSprite("cambiar", "/assets/botones/cambiarcubo.png")
+            loadSprite("menu", "/assets/botones/menu.png")
+            loadSprite("carga", "/assets/fondos/olas.jpg")
 
             const material = [
                 {
@@ -112,10 +117,8 @@
             loadBean()
 
             function mostrarVidas() {
-               
                 destroyAll("corazon");
-
-                const initialX = width() - 40 - (3 * 32);
+                const initialX = width() - 40 - (3 * 32); 
 
                 for (let i = 0; i < vidas; i++) {
                     add([
@@ -126,6 +129,7 @@
                 }
             }
 
+            let puntos = 0;
 
             scene("battle", () => {
 
@@ -171,7 +175,7 @@
                     }
                 });
 
-                let puntos = 0;
+                
                 let puntosTexto;
 
                 function puntuacion() {
@@ -179,13 +183,16 @@
                         destroy(puntosTexto);
                     }
 
+                    const posX = Math.floor(width() * 0.05); 
+                    const posY = Math.floor(height() * 0.05); 
+
                     puntosTexto = add([
                     text(puntos.toString(), {
                         size: 50,
                         font: "Arial",
                         weight: "bold",
                     }),
-                        pos(width() - 1860, 50),
+                        pos(posX, posY),
                         {
                             value: puntos,
                         },
@@ -198,11 +205,12 @@
                     const filteredObjects = material.filter(item => item.sprite === obj.name);
                     if (filteredObjects.length > 0) {
                         const objMaterial = filteredObjects[0].material;
-                        if (objMaterial !== "carton") {
+                        if (objMaterial !== "vidrio") {
+                           
                             destroy(obj);
                             vidas--;
                             mostrarVidas();
-                    
+                           
                             if (vidas <= 0) {
                                 go("gameover");
                             }

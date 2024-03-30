@@ -10,10 +10,49 @@
 
     <body>
         <script>
-            kaboom();
+                            
+            kaboom();      
+            window.addEventListener('resize', () => {
+                // Ajustar el tamaño y la posición de los elementos del juego
+                // en respuesta a cambios en el tamaño de la ventana
+                kaboom.setConfig({
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                });
+            });      
 
-            loadSprite("background", "/assets/fondo.jpg");
-            loadSprite("corazon", "/assets/sprites/corazon.png")
+            loadSprite("background", "/assets/fondos/fondo.jpg");
+            loadSprite("background2", "/assets/fondos/fondo_gameover.jpg")
+            loadSprite("corazon", "/assets/botones/corazon.png")
+            loadSprite("reiniciar", "/assets/botones/reiniciar.png")
+            loadSprite("cambiar", "/assets/botones/cambiarcubo.png")
+            loadSprite("menu", "/assets/botones/menu.png")
+            loadSprite("carga", "/assets/fondos/olas.jpg")
+
+            // Escena de carga
+            scene("loading", () => {
+                add([
+                    sprite("carga"),
+                    pos(width() / 2, height() / 2),
+                    origin("center"),
+                ]);
+
+                add([
+                    text("Cargando...", {
+                        size: 24,
+                        font: "Arial",
+                        color: rgb(255, 255, 255),
+                    }),
+                    pos(width() / 2, height() / 2 + 30),
+                    origin("center"),
+                ]);
+
+                wait(4, () => {
+                    // Cambiar a la escena principal del juego después de 4 segundos
+                    go("battle");
+                });
+            });
+
 
             const material = [
                 {
@@ -112,18 +151,20 @@
             loadBean()
 
             function mostrarVidas() {
+                
                 destroyAll("corazon");
-                const initialX = width() - 40 - (3 * 32); 
-
+                const initialX = width() - 30 - (3 * 70); 
                 for (let i = 0; i < vidas; i++) {
                     add([
-                        sprite("corazon"), 
-                        pos(initialX + i * 32, 40), 
+                        sprite("corazon"),
+                        pos(initialX + i * 70, 40),
+                        z("ui"),
                         "corazon"
                     ]);
                 }
             }
 
+            let puntos = 0;
 
             scene("battle", () => {
 
@@ -144,6 +185,7 @@
                 add([
                     sprite("background"),
                     pos(0, 0),
+                    scale(width() / 1900),
                 ]);
 
                 mostrarVidas()
@@ -169,7 +211,7 @@
                     }
                 });
 
-                let puntos = 0;
+                
                 let puntosTexto;
 
                 function puntuacion() {
@@ -177,13 +219,16 @@
                         destroy(puntosTexto);
                     }
 
+                    const posX = Math.floor(width() * 0.05); 
+                    const posY = Math.floor(height() * 0.05); 
+
                     puntosTexto = add([
                     text(puntos.toString(), {
                         size: 50,
                         font: "Arial",
                         weight: "bold",
                     }),
-                        pos(width() - 1860, 50),
+                        pos(posX, posY),
                         {
                             value: puntos,
                         },
@@ -196,12 +241,12 @@
                     const filteredObjects = material.filter(item => item.sprite === obj.name);
                     if (filteredObjects.length > 0) {
                         const objMaterial = filteredObjects[0].material;
-                        if (objMaterial !== "vidrio") {
-                           
+                        if (objMaterial !== "envases") {
+                            
                             destroy(obj);
                             vidas--;
                             mostrarVidas();
-                           
+                            
                             if (vidas <= 0) {
                                 go("gameover");
                             }
@@ -226,6 +271,7 @@
                     ])
                     wait(0.3, spawnTrash)
                 }
+
 
                 onUpdate("trash", (t) => {
                     t.move(0, t.speed * (1))
@@ -297,7 +343,7 @@ Tu puntuación es de ${puntos} puntos`, {
                 });
 
             });
-            
+
             go("battle")            
 
         </script>
