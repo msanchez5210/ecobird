@@ -10,19 +10,30 @@ body {
 }
 body .caja_boton {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  width: 100%;
   position: absolute;
-  top: 20%;
-  left: 40%;
+  top: 47%;
 }
 body .caja_boton:hover {
+  transform: scale(1.05);
+}
+body .caja_reglas {
+  display: flex;
+  flex-direction: columns;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  top: 73%;
+}
+body .caja_reglas:hover {
   transform: scale(1.05);
 }
 body .boton_ajustes {
   position: absolute;
   bottom: 5%;
   right: 5%;
-}/*# sourceMappingURL=style1.css.map */
+}

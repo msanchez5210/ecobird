@@ -19,6 +19,7 @@
             loadSprite("cambiar", "/assets/botones/cambiarcubo.png")
             loadSprite("menu", "/assets/botones/menu.png")
             loadSprite("carga", "/assets/fondos/olas.jpg")
+            loadSprite("cubocarton", "/assets/sprites/cubocarton.png")
             
             const material = [
                 {
@@ -84,6 +85,10 @@
                 {
                     "sprite": "pescado",
                     "material": "organico"
+                },
+                {
+                    "sprite":"caja",
+                    "material": "carton"
                 }
             ]
 
@@ -106,6 +111,7 @@
                 "zapas",
                 "tele",
                 "pescado",
+                "caja",
             ]
 
             let vidas = 3;
@@ -114,18 +120,14 @@
                 loadSprite(obj, `/assets/sprites/${obj}.png`)
             }
 
-            loadBean()
-
             function mostrarVidas() {
-               
                 destroyAll("corazon");
-
-                const initialX = width() - 40 - (3 * 32);
+                const initialX = width() - 60 - (3 * 32); 
 
                 for (let i = 0; i < vidas; i++) {
                     add([
                         sprite("corazon"), 
-                        pos(initialX + i * 32, 40), 
+                        pos(initialX + i * 50, 40), 
                         "corazon"
                     ]);
                 }
@@ -157,10 +159,11 @@
                 mostrarVidas()
 
                 const player = add([
-                    sprite("bean"),
+                    sprite("cubocarton"),
                     area(),
                     pos(width() / 2, height() - 64),
                     anchor("center"),
+                    scale(0.6),
                 ]);
 
                 onKeyDown("left", () => {

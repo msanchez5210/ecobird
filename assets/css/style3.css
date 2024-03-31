@@ -1,0 +1,39 @@
+body {
+  background-image: url("/assets/fondos/olas.jpg");
+  height: 100vh;
+  background-position: center;
+  overflow: hidden;
+}
+body .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 30px 90px 30px 90px;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+body .container .plastico, body .container .vidrio, body .container .carton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+body .container .plastico .nombreCubo, body .container .vidrio .nombreCubo, body .container .carton .nombreCubo {
+  font-size: 40px;
+}
+body .container .plastico .info, body .container .vidrio .info, body .container .carton .info {
+  font-size: 20px;
+}
+body .boton_volver {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  bottom: 5%;
+}
+body .boton_volver:hover {
+  transform: scale(1.05);
+}

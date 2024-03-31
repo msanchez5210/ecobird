@@ -15,7 +15,7 @@ body .caja {
   align-items: center;
   height: 100vh;
   position: fixed;
-  left: 32%;
+  left: 30%;
   bottom: 15%;
 }
 body .caja .cubos {
@@ -39,4 +39,4 @@ body .caja .cubos .caja_cubos .nombres_cubos {
   bottom: -30px;
   left: 50%;
   transform: translateX(-50%);
-}/*# sourceMappingURL=style2.css.map */
+}

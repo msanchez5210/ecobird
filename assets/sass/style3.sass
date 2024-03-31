@@ -1,0 +1,35 @@
+body
+    background-image: url('/assets/fondos/olas.jpg')
+    height: 100vh
+    background-position: center
+    overflow: hidden
+
+    .container
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        padding: 30px 90px 30px 90px
+        align-items: center
+        font-family: Arial, Helvetica, sans-serif
+        color: white
+        .plastico,.vidrio,.carton
+            display: flex
+            flex-direction: column
+            align-items: center
+            padding: 20px
+
+            .nombreCubo
+                font-size: 40px
+
+            .info
+                font-size: 20px
+    .boton_volver
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        width: 100%
+        position: absolute
+        bottom: 5%
+        &:hover
+            transform: scale(1.05)
