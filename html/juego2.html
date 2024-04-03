@@ -12,14 +12,14 @@
         <script>
             kaboom();
 
-            loadSprite("background", "/assets/fondos/fondo.jpg");
-            loadSprite("background2", "/assets/fondos/fondo_gameover.jpg")
-            loadSprite("corazon", "/assets/botones/corazon.png")
-            loadSprite("reiniciar", "/assets/botones/reiniciar.png")
-            loadSprite("cambiar", "/assets/botones/cambiarcubo.png")
-            loadSprite("menu", "/assets/botones/menu.png")
-            loadSprite("carga", "/assets/fondos/olas.jpg")
-            loadSprite("cubovidrio", "/assets/sprites/cubovidrio.png")
+            loadSprite("background", "/fondos/fondo.jpg");
+            loadSprite("background2", "/fondos/fondo_gameover.jpg")
+            loadSprite("corazon", "/botones/corazon.png")
+            loadSprite("reiniciar", "/botones/reiniciar.png")
+            loadSprite("cambiar", "/botones/cambiarcubo.png")
+            loadSprite("menu", "/botones/menu.png")
+            loadSprite("carga", "/fondos/olas.jpg")
+            loadSprite("cubovidrio", "/sprites/cubovidrio.png")
 
 
             const material = [
@@ -118,7 +118,7 @@
             let vidas = 3;
 
             for (const obj of objs) {
-                loadSprite(obj, `/assets/sprites/${obj}.png`)
+                loadSprite(obj, `/sprites/${obj}.png`)
             }
 
             function mostrarVidas() {
@@ -155,6 +155,7 @@
                 add([
                     sprite("background"),
                     pos(0, 0),
+                    scale(width() / 1900, height() / 1080),
                 ]);
 
                 mostrarVidas()

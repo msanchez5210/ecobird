@@ -10,7 +10,8 @@
 
     <body>
         <script>
-            kaboom();
+                            
+            kaboom();      
 
             loadSprite("background", "/assets/fondos/fondo.jpg");
             loadSprite("background2", "/assets/fondos/fondo_gameover.jpg")
@@ -19,8 +20,8 @@
             loadSprite("cambiar", "/assets/botones/cambiarcubo.png")
             loadSprite("menu", "/assets/botones/menu.png")
             loadSprite("carga", "/assets/fondos/olas.jpg")
-            loadSprite("cubocarton", "/assets/sprites/cubocarton.png")
-            
+            loadSprite("cuboplastico", "/assets/sprites/cuboenvases.png")
+
             const material = [
                 {
                     "sprite": "botellavino",
@@ -154,12 +155,13 @@
                 add([
                     sprite("background"),
                     pos(0, 0),
+                    scale(width() / 1900, height() / 1080),
                 ]);
 
                 mostrarVidas()
 
                 const player = add([
-                    sprite("cubocarton"),
+                    sprite("cuboplastico"),
                     area(),
                     pos(width() / 2, height() - 64),
                     anchor("center"),
@@ -180,6 +182,7 @@
                     }
                 });
 
+                
                 let puntosTexto;
 
                 function puntuacion() {
@@ -209,11 +212,12 @@
                     const filteredObjects = material.filter(item => item.sprite === obj.name);
                     if (filteredObjects.length > 0) {
                         const objMaterial = filteredObjects[0].material;
-                        if (objMaterial !== "carton") {
+                        if (objMaterial !== "envases") {
+                            
                             destroy(obj);
                             vidas--;
                             mostrarVidas();
-                    
+                            
                             if (vidas <= 0) {
                                 go("gameover");
                             }
@@ -238,6 +242,7 @@
                     ])
                     wait(0.3, spawnTrash)
                 }
+
 
                 onUpdate("trash", (t) => {
                     t.move(0, t.speed * (1))
@@ -309,7 +314,7 @@ Tu puntuación es de ${puntos} puntos`, {
                 });
 
             });
-            
+
             go("battle")            
 
         </script>

@@ -10,26 +10,17 @@
 
     <body>
         <script>
-                            
-            kaboom();      
-            window.addEventListener('resize', () => {
-                // Ajustar el tamaño y la posición de los elementos del juego
-                // en respuesta a cambios en el tamaño de la ventana
-                kaboom.setConfig({
-                    width: window.innerWidth,
-                    height: window.innerHeight,
-                });
-            });      
+            kaboom();
 
-            loadSprite("background", "/assets/fondos/fondo.jpg");
-            loadSprite("background2", "/assets/fondos/fondo_gameover.jpg")
-            loadSprite("corazon", "/assets/botones/corazon.png")
-            loadSprite("reiniciar", "/assets/botones/reiniciar.png")
-            loadSprite("cambiar", "/assets/botones/cambiarcubo.png")
-            loadSprite("menu", "/assets/botones/menu.png")
-            loadSprite("carga", "/assets/fondos/olas.jpg")
-            loadSprite("cuboplastico", "/assets/sprites/cuboenvases.png")
-
+            loadSprite("background", "/fondos/fondo.jpg");
+            loadSprite("background2", "/fondos/fondo_gameover.jpg")
+            loadSprite("corazon", "/botones/corazon.png")
+            loadSprite("reiniciar", "/botones/reiniciar.png")
+            loadSprite("cambiar", "/botones/cambiarcubo.png")
+            loadSprite("menu", "/botones/menu.png")
+            loadSprite("carga", "/fondos/olas.jpg")
+            loadSprite("cubocarton", "/sprites/cubocarton.png")
+            
             const material = [
                 {
                     "sprite": "botellavino",
@@ -126,7 +117,7 @@
             let vidas = 3;
 
             for (const obj of objs) {
-                loadSprite(obj, `/assets/sprites/${obj}.png`)
+                loadSprite(obj, `/sprites/${obj}.png`)
             }
 
             function mostrarVidas() {
@@ -163,13 +154,13 @@
                 add([
                     sprite("background"),
                     pos(0, 0),
-                    scale(width() / 1900),
+                    scale(width() / 1900, height() / 1080),
                 ]);
 
                 mostrarVidas()
 
                 const player = add([
-                    sprite("cuboplastico"),
+                    sprite("cubocarton"),
                     area(),
                     pos(width() / 2, height() - 64),
                     anchor("center"),
@@ -190,7 +181,6 @@
                     }
                 });
 
-                
                 let puntosTexto;
 
                 function puntuacion() {
@@ -220,12 +210,11 @@
                     const filteredObjects = material.filter(item => item.sprite === obj.name);
                     if (filteredObjects.length > 0) {
                         const objMaterial = filteredObjects[0].material;
-                        if (objMaterial !== "envases") {
-                            
+                        if (objMaterial !== "carton") {
                             destroy(obj);
                             vidas--;
                             mostrarVidas();
-                            
+                    
                             if (vidas <= 0) {
                                 go("gameover");
                             }
@@ -250,7 +239,6 @@
                     ])
                     wait(0.3, spawnTrash)
                 }
-
 
                 onUpdate("trash", (t) => {
                     t.move(0, t.speed * (1))
@@ -322,7 +310,7 @@ Tu puntuación es de ${puntos} puntos`, {
                 });
 
             });
-
+            
             go("battle")            
 
         </script>

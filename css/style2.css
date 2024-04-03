@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url("/assets/fondos/fondo_elegir.jpg");
+  background-image: url("/fondos/fondo_elegir.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -15,7 +15,7 @@ body .caja {
   align-items: center;
   height: 100vh;
   position: fixed;
-  left: 30%;
+  left: 28%;
   bottom: 15%;
 }
 body .caja .cubos {
@@ -25,18 +25,23 @@ body .caja .cubos {
   align-items: center;
 }
 body .caja .cubos .caja_cubos {
-  padding: 10%;
+  padding-right: 9%;
 }
 body .caja .cubos .caja_cubos:hover {
   transform: scale(1.05);
 }
 body .caja .cubos .caja_cubos:hover .nombres_cubos {
   visibility: visible;
+  width: 80%;
+  height: auto;
 }
 body .caja .cubos .caja_cubos .nombres_cubos {
   visibility: hidden;
-  position: absolute;
-  bottom: -30px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: fixed;
+  top: 110%;
+  left: 10%;
+}
+body .caja .cubos .caja_cubos .img_cubos {
+  width: auto;
+  height: 20vh;
 }
