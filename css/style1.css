@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url("/fondos/fondo_inicio.jpg");
+  background-image: url("/sprites/fondo_inicio.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -17,6 +17,10 @@ body .caja_boton {
   position: absolute;
   top: 47%;
 }
+body .caja_boton img {
+  width: auto;
+  height: 20vh;
+}
 body .caja_boton:hover {
   transform: scale(1.05);
 }
@@ -29,6 +33,10 @@ body .caja_reglas {
   position: absolute;
   top: 73%;
 }
+body .caja_reglas img {
+  width: auto;
+  height: 20vh;
+}
 body .caja_reglas:hover {
   transform: scale(1.05);
 }
@@ -36,4 +44,8 @@ body .boton_ajustes {
   position: absolute;
   bottom: 5%;
   right: 5%;
+}
+body .boton_ajustes img {
+  width: auto;
+  height: 10vh;
 }
