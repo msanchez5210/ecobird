@@ -13,14 +13,14 @@
                             
             kaboom();      
 
-            loadSprite("background", "/assets/fondos/fondo.jpg");
-            loadSprite("background2", "/assets/fondos/fondo_gameover.jpg")
-            loadSprite("corazon", "/assets/botones/corazon.png")
-            loadSprite("reiniciar", "/assets/botones/reiniciar.png")
-            loadSprite("cambiar", "/assets/botones/cambiarcubo.png")
-            loadSprite("menu", "/assets/botones/menu.png")
-            loadSprite("carga", "/assets/fondos/olas.jpg")
-            loadSprite("cuboplastico", "/assets/sprites/cuboenvases.png")
+            loadSprite("background", "/sprites/fondo.jpg");
+            loadSprite("background2", "/sprites/fondo_gameover.jpg")
+            loadSprite("corazon", "/sprites/corazon.png")
+            loadSprite("reiniciar", "/sprites/reiniciar.png")
+            loadSprite("cambiar", "/sprites/cambiarcubo.png")
+            loadSprite("menu", "/sprites/menu.png")
+            loadSprite("carga", "/sprites/olas.jpg")
+            loadSprite("cuboplastico", "/sprites/cuboenvases.png")
 
             const material = [
                 {
@@ -118,7 +118,7 @@
             let vidas = 3;
 
             for (const obj of objs) {
-                loadSprite(obj, `/assets/sprites/${obj}.png`)
+                loadSprite(obj, `/sprites/${obj}.png`)
             }
 
             function mostrarVidas() {
