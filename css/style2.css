@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("ecobird/sprites/fondo_elegir.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+  align-content: center;
+}
+body .caja {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: fixed;
+  left: 28%;
+  bottom: 15%;
+}
+body .caja .cubos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+body .caja .cubos .caja_cubos {
+  padding-right: 9%;
+}
+body .caja .cubos .caja_cubos:hover {
+  transform: scale(1.05);
+}
+body .caja .cubos .caja_cubos:hover .nombres_cubos {
+  visibility: visible;
+  width: 80%;
+  height: auto;
+}
+body .caja .cubos .caja_cubos .nombres_cubos {
+  visibility: hidden;
+  position: fixed;
+  top: 110%;
+  left: 10%;
+}
+body .caja .cubos .caja_cubos .img_cubos {
+  width: auto;
+  height: 20vh;
+}
